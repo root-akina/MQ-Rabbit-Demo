@@ -53,4 +53,13 @@ public class testMQ {
         String msg = "hello direct.."+LocalDate.now();
         rabbit.convertAndSend(exchangeName,routingKey,msg);
     }
+
+    //Topic 广播模式  有routingKey  可以使用通配符   #：匹配一个或多个词   *只能一个
+    @Test
+    public void topicExchange(){
+        String exchangeName = "hmall.topic";
+        String routingKey ="red.news";
+        String msg = "hello ..topic.."+LocalDate.now();
+        rabbit.convertAndSend(exchangeName,routingKey,msg);
+    }
 }

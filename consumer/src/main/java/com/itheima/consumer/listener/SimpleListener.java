@@ -44,4 +44,14 @@ public class SimpleListener {
     public void directQueue2(String msg){
         System.out.println("hello Direct.queue 2: {"+msg+"}");
     }
+
+    //topic 模式
+    @RabbitListener(queues = "topic.queue1")
+    public void topicQueue1(String msg){
+        System.out.println("hello Topic.queue 1.: { "+msg+"}");
+    }
+    @RabbitListener(queues = "topic.queue2")
+    public void topicQueue2(String msg){
+        System.out.println("hello Topic.queue 2 .: { "+msg+"}");
+    }
 }
