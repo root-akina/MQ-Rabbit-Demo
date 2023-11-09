@@ -34,4 +34,14 @@ public class SimpleListener {
     public void fanoutQueue2(String msg) {
         System.out.println("fanout.queue 2 ：{"+msg+"}");
     }
+
+    //direct 广播消息 有 routingKey
+    @RabbitListener(queues = "direct.queue1")
+    public void directQueue1(String msg){
+        System.out.println("hello Direct.queue 1 : {"+msg+"}");
+    }
+    @RabbitListener(queues = "direct.queue2")
+    public void directQueue2(String msg){
+        System.out.println("hello Direct.queue 2: {"+msg+"}");
+    }
 }

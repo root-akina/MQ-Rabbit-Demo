@@ -44,4 +44,13 @@ public class testMQ {
         String msg = "hello fanout..."+ LocalDate.now();
         rabbit.convertAndSend(exchangeName,"",msg);
     }
+
+    //direct 广播发送，但有 routingKey 关键字 包含关键字的消息才会接受
+    @Test
+    public void directExchange(){
+        String exchangeName = "hmall.direct";
+        String routingKey = "blue";
+        String msg = "hello direct.."+LocalDate.now();
+        rabbit.convertAndSend(exchangeName,routingKey,msg);
+    }
 }
