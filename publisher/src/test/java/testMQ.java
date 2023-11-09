@@ -16,7 +16,7 @@ public class testMQ {
     public void simpleQueue(){
 
         String queue = "simple.queue";
-        String msg = "hello"+ LocalDateTime.now();
+        String msg = "hello  since: "+ LocalDateTime.now();
         rabbit.convertAndSend(queue,msg);
     }
 }
