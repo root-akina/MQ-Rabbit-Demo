@@ -4,6 +4,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @SpringBootTest(classes = PublisherApplication.class)
@@ -31,5 +32,16 @@ public class testMQ {
         for (int i = 0; i < 50; i++) {
             rabbit.convertAndSend(queue,msg);
         }
+    }
+
+
+    /**
+     * hmall.fanout 广播发送，所有绑定的queue都可以接收到消息
+     */
+    @Test
+    public void fanoutExchange(){
+        String exchangeName = "hmall.fanout";
+        String msg = "hello fanout..."+ LocalDate.now();
+        rabbit.convertAndSend(exchangeName,"",msg);
     }
 }

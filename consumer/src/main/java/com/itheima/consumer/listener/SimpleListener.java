@@ -24,4 +24,14 @@ public class SimpleListener {
         System.out.println("work.queue 2 : {"+msg+"}");
         Thread.sleep(200);
     }
+
+    //fanout 广播消息
+    @RabbitListener(queues = "fanout.queue1")
+    public void fanoutQueue1(String msg) {
+        System.out.println("fanout.queue 1 ：{"+msg+"}");
+    }
+    @RabbitListener(queues = "fanout.queue2")
+    public void fanoutQueue2(String msg) {
+        System.out.println("fanout.queue 2 ：{"+msg+"}");
+    }
 }
