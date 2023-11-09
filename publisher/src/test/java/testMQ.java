@@ -19,4 +19,17 @@ public class testMQ {
         String msg = "hello  since: "+ LocalDateTime.now();
         rabbit.convertAndSend(queue,msg);
     }
+
+    /**
+     * 多线程发送
+     */
+    @Test
+    public void workQueue(){
+
+        String queue = "work.queue";
+        String msg = "hello  since: "+ LocalDateTime.now();
+        for (int i = 0; i < 50; i++) {
+            rabbit.convertAndSend(queue,msg);
+        }
+    }
 }

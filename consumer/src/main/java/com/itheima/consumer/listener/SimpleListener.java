@@ -12,4 +12,16 @@ public class SimpleListener {
     public void simpleQueue(String msg){
         System.out.println("Simple.queue: {"+msg+"}");
     }
+
+    //work。queue 共享消息池
+    @RabbitListener(queues = "work.queue")
+    public void workQueue1(String msg) throws InterruptedException {
+        System.out.println("work.queue 1 : {"+msg+"}");
+        Thread.sleep(20);
+    }
+    @RabbitListener(queues = "work.queue")
+    public void workQueue2(String msg) throws InterruptedException {
+        System.out.println("work.queue 2 : {"+msg+"}");
+        Thread.sleep(200);
+    }
 }
