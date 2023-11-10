@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 @SpringBootTest(classes = PublisherApplication.class)
 public class testMQ {
@@ -61,5 +63,14 @@ public class testMQ {
         String routingKey ="red.news";
         String msg = "hello ..topic.."+LocalDate.now();
         rabbit.convertAndSend(exchangeName,routingKey,msg);
+    }
+
+    @Test
+    public void objectQueue(){
+        String queueName = "Object.queue";
+        Map<String,Object> map = new HashMap<>();
+        map.put("name","旃檀");
+        map.put("age",21);
+        rabbit.convertAndSend(queueName,map);
     }
 }

@@ -1,5 +1,8 @@
 package com.itheima.consumer.listener;
 
+import org.springframework.amqp.rabbit.annotation.Exchange;
+import org.springframework.amqp.rabbit.annotation.Queue;
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
@@ -54,4 +57,19 @@ public class SimpleListener {
     public void topicQueue2(String msg){
         System.out.println("hello Topic.queue 2 .: { "+msg+"}");
     }
+
+    //使用注解绑定并创建交换机和队列
+    @RabbitListener(bindings =@QueueBinding(
+            exchange =@Exchange(name = "QBing.direct",type = "direct"),
+            value = @Queue(name = "direct.queue6"),
+            key = {"red","blue"}
+    ))
+    public void annotationExchange(){}
+
+    @RabbitListener(bindings =@QueueBinding(
+            exchange =@Exchange(name = "QBing.fanout",type = "fanout"),
+            value = @Queue(name = "fanout.queue6")
+    ))
+    public void annotationFanoutExchange(){}
+
 }
