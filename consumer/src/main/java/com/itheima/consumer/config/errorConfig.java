@@ -5,6 +5,7 @@ public class errorConfig {
         System.out.println("day_11/11_01");
         System.out.println("day_11/11_02");
         System.out.println("day_11/11_03");
+        System.out.println();
 
     }
 }
