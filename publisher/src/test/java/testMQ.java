@@ -73,4 +73,9 @@ public class testMQ {
         map.put("age",21);
         rabbit.convertAndSend(queueName,map);
     }
+
+    @Test
+    public void timeNow(){
+        System.out.println(LocalDateTime.now());
+    }
 }
