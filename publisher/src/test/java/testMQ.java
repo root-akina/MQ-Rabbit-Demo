@@ -77,5 +77,7 @@ public class testMQ {
     @Test
     public void timeNow(){
         System.out.println(LocalDateTime.now());
+        System.out.println(LocalDateTime.now());
+        System.out.println(LocalDateTime.now());
     }
 }
